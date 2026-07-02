@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link id="theme-style" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <link id="theme-style" rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/vue.css">
 
 
 
@@ -446,7 +446,7 @@
       // 恢复保存的主题
       var saved = localStorage.getItem('docsify-theme');
       if (saved) {
-        document.getElementById('theme-style').href = '//cdn.jsdelivr.net/npm/docsify/themes/' + saved + '.css';
+        document.getElementById('theme-style').href = '//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/' + saved + '.css';
 
       }
 
@@ -492,7 +492,7 @@
           });
 
           // 切换主题
-          document.getElementById('theme-style').href = '//cdn.jsdelivr.net/npm/docsify/themes/' + theme + '.css';
+          document.getElementById('theme-style').href = '//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/' + theme + '.css';
           localStorage.setItem('docsify-theme', theme);
           document.body.classList.remove('theme-vue', 'theme-dark', 'theme-pure', 'theme-dolphin', 'theme-buble');
           document.body.classList.add('theme-' + theme);
@@ -560,6 +560,6 @@
 
   </script>
   <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/docsify.min.js"></script>
 </body>
 </html>
