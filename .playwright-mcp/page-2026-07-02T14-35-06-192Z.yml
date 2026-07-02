@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - button "Menu" [ref=e3] [cursor=pointer]
+    - complementary [ref=e8]:
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - strong [ref=e12]: 个人文档
+        - listitem [ref=e13]:
+          - link "文档 A" [ref=e14] [cursor=pointer]:
+            - /url: "#/Ownermd/a"
+        - listitem [ref=e15]:
+          - link "文档 B" [ref=e16] [cursor=pointer]:
+            - /url: "#/Ownermd/b"
+    - article [ref=e18]:
+      - heading "这是A文档" [level=1] [ref=e19]:
+        - link "这是A文档" [ref=e20] [cursor=pointer]:
+          - /url: "#/Ownermd/a?id=%e8%bf%99%e6%98%afa%e6%96%87%e6%a1%a3"
+  - generic:
+    - generic [ref=e21]:
+      - img "Logo" [ref=e22]
+      - generic [ref=e23]: ThesummerBlog
+    - generic [ref=e24]:
+      - link "🏠 首页" [ref=e25] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e26]: SchoolNetWork ▾
+      - generic [ref=e27]: Ownermd ▾
+  - generic [ref=e29] [cursor=pointer]:
+    - generic [ref=e31]: 💧
+    - generic [ref=e32]:
+      - generic [ref=e33]: 🌿
+      - generic [ref=e34]: 🌙
+      - generic [ref=e35]: 💧
+      - generic [ref=e36]: 🐬
+      - generic [ref=e37]: 🫧
+  - generic:
+    - generic: LOADING
