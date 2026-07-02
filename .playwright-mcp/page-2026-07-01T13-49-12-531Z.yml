@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e17]:
+    - list [ref=e18]:
+      - listitem [ref=e19] [cursor=pointer]:
+        - paragraph [ref=e20]:
+          - link "🏠 首页" [ref=e21]:
+            - /url: "#/"
+      - listitem [ref=e22] [cursor=pointer]:
+        - paragraph [ref=e23]: 🎨 主题
+        - list [ref=e48]:
+          - listitem [ref=e49]: 🌿 Vue
+          - listitem [ref=e50]: 🫧 Buble
+          - listitem [ref=e51]: 🌙 Dark
+          - listitem [ref=e52]: 💧 Pure
+          - listitem [ref=e53]: 🐬 Dolphin
+    - list [ref=e24]:
+      - listitem [ref=e25] [cursor=pointer]:
+        - paragraph [ref=e26]: SchoolNetWork
+      - listitem [ref=e27] [cursor=pointer]:
+        - paragraph [ref=e28]: Ownermd
+  - main [ref=e29]:
+    - button "Menu" [ref=e30] [cursor=pointer]
+    - complementary [ref=e35]:
+      - list [ref=e37]:
+        - listitem [ref=e38]:
+          - strong [ref=e39]: 个人文档
+        - listitem [ref=e40]:
+          - link "文档 A" [ref=e41] [cursor=pointer]:
+            - /url: "#/Ownermd/a"
+        - listitem [ref=e42]:
+          - link "文档 B" [ref=e43] [cursor=pointer]:
+            - /url: "#/Ownermd/b"
+    - article [ref=e45]:
+      - heading "这是A文档" [level=1] [ref=e46]:
+        - link "这是A文档" [ref=e47] [cursor=pointer]:
+          - /url: "#/Ownermd/a?id=%e8%bf%99%e6%98%afa%e6%96%87%e6%a1%a3"

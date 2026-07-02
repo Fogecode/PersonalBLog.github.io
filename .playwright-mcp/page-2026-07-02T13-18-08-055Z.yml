@@ -1,0 +1,20 @@
+- generic [active] [ref=e1]:
+  - main [ref=e37]:
+    - button "Menu" [ref=e38] [cursor=pointer]
+    - complementary [ref=e43]
+    - article [ref=e46]
+  - generic:
+    - generic [ref=e17]:
+      - img "Logo" [ref=e18]
+      - generic [ref=e19]: ThesummerBlog
+    - generic [ref=e20]:
+      - img "Logo" [ref=e21]
+      - generic [ref=e22]: ThesummerBlog
+    - generic [ref=e24] [cursor=pointer]:
+      - generic [ref=e26]: 🌿
+      - generic [ref=e27]:
+        - generic [ref=e28]: 🌿
+        - generic [ref=e29]: 🌙
+        - generic [ref=e30]: 💧
+        - generic [ref=e31]: 🐬
+        - generic [ref=e32]: 🫧

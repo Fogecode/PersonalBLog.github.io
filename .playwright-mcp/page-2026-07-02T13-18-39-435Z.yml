@@ -1,0 +1,32 @@
+- generic [active] [ref=e1]:
+  - main [ref=e37]:
+    - button "Menu" [ref=e38] [cursor=pointer]
+    - complementary [ref=e43]:
+      - list [ref=e47]:
+        - listitem [ref=e48]:
+          - strong [ref=e49]: 个人文档
+        - listitem [ref=e50]:
+          - link "文档 A" [ref=e51] [cursor=pointer]:
+            - /url: "#/Ownermd/a"
+        - listitem [ref=e52]:
+          - link "文档 B" [ref=e53] [cursor=pointer]:
+            - /url: "#/Ownermd/b"
+    - article [ref=e46]:
+      - heading "这是A文档" [level=1] [ref=e54]:
+        - link "这是A文档" [ref=e55] [cursor=pointer]:
+          - /url: "#/Ownermd/a?id=%e8%bf%99%e6%98%afa%e6%96%87%e6%a1%a3"
+  - generic:
+    - generic [ref=e17]:
+      - img "Logo" [ref=e18]
+      - generic [ref=e19]: ThesummerBlog
+    - generic [ref=e20]:
+      - img "Logo" [ref=e21]
+      - generic [ref=e22]: ThesummerBlog
+    - generic [ref=e24] [cursor=pointer]:
+      - generic [ref=e26]: 🌙
+      - generic [ref=e27]:
+        - generic [ref=e28]: 🌿
+        - generic [ref=e29]: 🌙
+        - generic [ref=e30]: 💧
+        - generic [ref=e31]: 🐬
+        - generic [ref=e32]: 🫧
