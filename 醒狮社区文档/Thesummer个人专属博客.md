@@ -14,11 +14,11 @@ Thesummer专属博客
 
 ### `官方格式：`
 
-<img src="../images/个人博客/image-20260702231250853.png" height="400" alt="官方格式" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<img src="images/个人博客/image-20260702231250853.png" height="400" alt="官方格式" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
 ### `Myself:`
 
-<img src="../images/个人博客/image-20260702231219074.png" height="400" alt="官方格式" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<img src="images/个人博客/image-20260702231219074.png" height="400" alt="官方格式" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
 
 
