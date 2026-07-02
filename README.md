@@ -16,11 +16,13 @@
 
 ### `官方格式：`
 
-<img width="2539" height="1319" alt="Image" src="https://github.com/user-attachments/assets/319c930d-1f1f-4656-a3d4-943fa90deaa6" />
+<img width="2539" height="1319" alt="image-20260702231250853" src="https://github.com/user-attachments/assets/effe533d-fbec-4352-ad75-56afaaffabcb" />
+
 
 ### `Myself:`
 
-<img width="2000" height="1089" alt="Image" src="https://github.com/user-attachments/assets/9cb251b2-ff6b-48a4-9b98-761dba3734a0" />
+<img width="2000" height="1089" alt="image-20260702231219074" src="https://github.com/user-attachments/assets/6f11f054-38cf-48b6-8836-50c274643286" />
+
 
 
 
