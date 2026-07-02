@@ -1,0 +1,12 @@
+# 隐私/对话记录
+对话记录-*.md
+
+# 浏览器自动化缓存
+.playwright-mcp/
+
+# IDE 配置
+.continue/
+
+# 系统文件
+Thumbs.db
+.DS_Store
