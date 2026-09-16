@@ -2,7 +2,7 @@
 * [重置路由](SchoolNetWork/Second.md) -->
 
 * **Thesummer个人博客**
-* [博客说明文档](博客说明文档.md)
+* [博客说明文档](README.md)
   * [修复报告](修复报告.md)
   * [博客改造指南](guide.md)
 * [博客介绍](醒狮社区文档/Thesummer个人专属博客.md)
