@@ -10,3 +10,10 @@
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# 工作记录（仅本地，不上传）
+memory.md
+
+# Node 依赖（本地预览用，勿上传）
+node_modules/
+package-lock.json

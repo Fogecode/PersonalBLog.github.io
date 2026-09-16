@@ -1,13 +1,13 @@
 {
-  "name": "docs",
+  "name": "thersummerblog",
   "version": "1.0.0",
-  "description": "> An awesome project.",
-  "main": "index.js",
+  "description": "Thesummer个人博客 — 基于 Docsify 的静态博客（GitHub Pages）",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "docsify serve .",
+    "start": "docsify serve ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "devDependencies": {
+    "docsify-cli": "^4.4.4"
+  },
+  "license": "ISC"
 }

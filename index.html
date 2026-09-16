@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>ThesummerBlogs</title>
+  <title>ThesummerBlog</title>
   <link rel="icon" href="images/blog.png" type="image/png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="Thesummer个人博客 — 致力自我研究~">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link id="theme-style" rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/vue.css">
+  <link id="theme-style" rel="stylesheet" href="lib/vue.css">
 
 
 
@@ -94,15 +94,6 @@
   }
 
 
-  /* 加载动画  圆圈进度条样式
-  .loader-spinner {
-    width: 44px;
-    height: 44px;
-    border: 3px solid #e0e0e0;
-    border-top-color: #42b983;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  } */
   /* 加载文字 */
   .loader-text {
     margin-top: 14px;
@@ -110,9 +101,6 @@
     font-size: 13px;
     letter-spacing: 3px;
     animation: pulse-text 1.4s ease-in-out infinite;
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
   }
   @keyframes pulse-text {
     0%, 100% { opacity: 0.4; }
@@ -398,14 +386,12 @@
 
     <!-- Loading 遮罩 -->
   <div id="loading-overlay">
-    <!-- 加载动画  圆圈进度条样式 -->
-    <div class="loader-spinner"></div>
-    <!-- 加载动画 -->
+    <!-- 加载条 -->
     <div class="loader-bar"><div class="bar"></div></div>
     <div class="loader-text">LOADING</div>
   </div>
   <script>
-    window.$docsify = {   
+    window.$docsify = {
       name: '',
       repo: '',
       loadSidebar: true,
@@ -415,109 +401,128 @@
       loadNavbar: true,
       plugins: [
         function (hook) {
-          // 在每次路由切换完成后执行
-        hook.doneEach(function () {
-        setTimeout(() => {
-          document.getElementById('loading-overlay')?.classList.add('hide');
-        }, 300);// 延迟 300ms 隐藏遮罩，确保内容加载完成
-      });
-
-        hook.beforeEach(function(content) {
-          const main = document.getElementById('main');
-          if (main) {
-            main.classList.add('fade-out');
-            setTimeout(() => main.classList.remove('fade-out'), 500);
+          // 路由切换前：内容淡出
+          hook.beforeEach(function (content) {
+            var main = document.getElementById('main');
+            if (main) {
+              main.classList.add('fade-out');
+              setTimeout(function () { main.classList.remove('fade-out'); }, 500);
+            }
+            return content;
+          });
+          // 路由切换完成后：内容淡入 + 隐藏 loading 遮罩
+          hook.doneEach(function () {
+            var main = document.getElementById('main');
+            if (main) {
+              main.classList.add('fade-in');
+              setTimeout(function () { main.classList.remove('fade-in'); }, 500);
+            }
+            setTimeout(function () {
+              document.getElementById('loading-overlay')?.classList.add('hide');
+            }, 300); // 延迟 300ms 隐藏遮罩，确保内容加载完成
+          });
         }
-        return content;
-      });
-        hook.doneEach(function() {
-          const main = document.getElementById('main');
-          if (main) {
-          main.classList.add('fade-in');
-          setTimeout(() => main.classList.remove('fade-in'), 500);
-          }
-      });
-      },
-     
       ]
 };
 
     (function() {
-      // 恢复保存的主题
-      var saved = localStorage.getItem('docsify-theme');
-      if (saved) {
-        document.getElementById('theme-style').href = '//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/' + saved + '.css';
+      // ===== 玻璃滑块 + 主题切换逻辑（主题文件本地化在 lib/，无第三方 CDN 依赖） =====
+      var THEMES = ['vue', 'dark', 'pure', 'dolphin', 'buble'];
+      var ICONS  = ['🌿', '🌙', '💧', '🐬', '🫧'];
+      var THEME_PATH = 'lib/';
+      var overlayEl = document.getElementById('loading-overlay');
 
+      function getSavedTheme() {
+        try { return localStorage.getItem('docsify-theme'); } catch (e) { return null; }
       }
 
+      function applyTheme(theme) {
+        document.getElementById('theme-style').href = THEME_PATH + theme + '.css';
+        document.body.classList.remove('theme-vue', 'theme-dark', 'theme-pure', 'theme-dolphin', 'theme-buble');
+        document.body.classList.add('theme-' + theme);
+        try { localStorage.setItem('docsify-theme', theme); } catch (e) {}
+      }
 
-      // ===== 玻璃滑块 + 主题切换逻辑 =====
-      (function() {
-        var themes = ['vue', 'dark', 'pure', 'dolphin', 'buble'];
-        var icons  = ['🌿', '🌙', '💧', '🐬', '🫧'];
+      // loading 遮罩随主题变色，避免深色主题下刷新时闪白
+      function syncOverlayTheme() {
+        if (!overlayEl) return;
+        var isDark = getSavedTheme() === 'dark';
+        overlayEl.style.background = isDark ? '#3f3f3f' : '#fff';
+        overlayEl.style.color = isDark ? '#c8c8c8' : '';
+      }
 
-        // 恢复保存的主题
-        var saved = localStorage.getItem('docsify-theme');
-        var currentIndex = saved ? themes.indexOf(saved) : 0;
-        if (currentIndex < 0) currentIndex = 0;
+      // 兜底：即使 docsify.min.js 加载失败（hooks 永远不会触发），遮罩也会自动消失，页面不会卡在白屏
+      function hideOverlay() {
+        if (overlayEl) overlayEl.classList.add('hide');
+      }
+      setTimeout(hideOverlay, 4000);
 
-        var thumb = document.getElementById('toggleThumb');
-        var thumbIcon = document.getElementById('thumbIcon');
-        var segments = document.querySelectorAll('.seg-item');
-        var track = document.querySelector('.toggle-track');
+      // 立即应用保存的主题，避免刷新时先闪一下默认主题
+      var saved = getSavedTheme();
+      var currentIndex = THEMES.indexOf(saved) >= 0 ? THEMES.indexOf(saved) : 0;
+      applyTheme(THEMES[currentIndex]);
+      syncOverlayTheme();
 
-        function setTheme(index) {
-          currentIndex = index;
-          var theme = themes[index];
+      // ===== 滑块 UI =====
+      var thumb = document.getElementById('toggleThumb');
+      var thumbIcon = document.getElementById('thumbIcon');
+      var segments = document.querySelectorAll('.seg-item');
+      var track = document.querySelector('.toggle-track');
 
-          // 移动 thumb
-          var firstSeg = segments[0];
-          var lastSeg = segments[segments.length - 1];
-          if (firstSeg && lastSeg) {
-            var trackRect = track.getBoundingClientRect();
-            var firstRect = firstSeg.getBoundingClientRect();
-            var lastRect = lastSeg.getBoundingClientRect();
-            var firstCenter = (firstRect.left + firstRect.right) / 2 - trackRect.left;
-            var lastCenter = (lastRect.left + lastRect.right) / 2 - trackRect.left;
-            var step = (lastCenter - firstCenter) / (segments.length - 1);
-            thumb.style.left = (firstCenter - 15 + step * index) + 'px';
-          }
+      function setTheme(index) {
+        currentIndex = index;
+        var theme = THEMES[index];
 
-          // 更新图标
-          thumbIcon.textContent = icons[index];
-
-          // 更新 active
-          segments.forEach(function(el, i) {
-            el.classList.toggle('active', i === index);
-          });
-
-          // 切换主题
-          document.getElementById('theme-style').href = '//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/themes/' + theme + '.css';
-          localStorage.setItem('docsify-theme', theme);
-          document.body.classList.remove('theme-vue', 'theme-dark', 'theme-pure', 'theme-dolphin', 'theme-buble');
-          document.body.classList.add('theme-' + theme);
+        // 移动 thumb
+        var firstSeg = segments[0];
+        var lastSeg = segments[segments.length - 1];
+        if (firstSeg && lastSeg) {
+          var trackRect = track.getBoundingClientRect();
+          var firstRect = firstSeg.getBoundingClientRect();
+          var lastRect = lastSeg.getBoundingClientRect();
+          var firstCenter = (firstRect.left + firstRect.right) / 2 - trackRect.left;
+          var lastCenter = (lastRect.left + lastRect.right) / 2 - trackRect.left;
+          var step = (lastCenter - firstCenter) / (segments.length - 1);
+          thumb.style.left = (firstCenter - 15 + step * index) + 'px';
         }
 
-        // 等待 DOM 渲染完成再初始化位置
-        setTimeout(function() {
-          setTheme(currentIndex);
-        }, 500);
-
-        // 点击滑块事件
-        track.addEventListener('click', function(e) {
-          var seg = e.target.closest('.seg-item');
-          if (seg) {
-            var idx = Array.from(segments).indexOf(seg);
-            setTheme(idx);
-            return;
-          }
-          // 点击空白区域切到下一个主题
-          setTheme((currentIndex + 1) % themes.length);
+        // 更新图标与 active
+        thumbIcon.textContent = ICONS[index];
+        segments.forEach(function (el, i) {
+          el.classList.toggle('active', i === index);
         });
-      })();
 
-      
-      // 封面页控制 — 隐藏导航菜单
+        applyTheme(theme);
+      }
+
+      // 等待 DOM 渲染完成再初始化滑块位置
+      setTimeout(function () {
+        setTheme(currentIndex);
+      }, 500);
+
+      // 点击滑块事件
+      track.addEventListener('click', function (e) {
+        var seg = e.target.closest('.seg-item');
+        if (seg) {
+          setTheme(Array.from(segments).indexOf(seg));
+          return;
+        }
+        // 点击空白区域切到下一个主题
+        setTheme((currentIndex + 1) % THEMES.length);
+      });
+
+      // 导航栏/侧边栏中的 .theme-link 主题链接（事件委托，docsify 重渲染后依然有效）
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('.theme-link');
+        if (!link) return;
+        var idx = THEMES.indexOf(link.getAttribute('data-theme'));
+        if (idx >= 0) {
+          setTheme(idx);
+          e.preventDefault();
+        }
+      });
+
+      // 封面页控制 — 隐藏导航菜单与滑块
       function toggleTopBar() {
         var isCover = !location.hash || location.hash === '#/';
         var bar = document.querySelector('.custom-navbar');
@@ -525,41 +530,21 @@
         var display = isCover ? 'none' : '';
         if (bar) bar.style.display = display;
         if (slider) slider.style.display = display;
-        // 从封面切到子页面时，重新计算滑块位置
+        // 从封面切到子页面时，重新校准滑块 active 状态
         if (!isCover) {
-          var savedTheme = localStorage.getItem('docsify-theme') || 'vue';
-          var idx = ['vue','dark','pure','dolphin','buble'].indexOf(savedTheme);
-          if (idx >= 0) {
-            document.querySelectorAll('.seg-item').forEach(function(el, i) {
-              el.classList.toggle('active', i === idx);
-            });
-          }
+          segments.forEach(function (el, i) {
+            el.classList.toggle('active', i === currentIndex);
+          });
         }
       }
       window.addEventListener('hashchange', toggleTopBar);
       toggleTopBar();
-
-
-      // 封面页控制
-      // function toggleNav() {
-      //   var isCover = !location.hash || location.hash === '#/';
-      //   var nav = document.querySelector('.app-nav');
-      //   if (nav) {
-      //     if (isCover) {
-      //       nav.style.display = 'none';
-      //     } else {
-      //       nav.style.display = '';
-      //     }
-      //   }
-      // }
-      // window.addEventListener('hashchange', toggleNav);
-      // toggleNav();
     })();
 
 
 
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.bootcdn.net/ajax/libs/docsify/4.13.1/docsify.min.js"></script>
+  <!-- Docsify v4（本地自托管，见 lib/ 目录） -->
+  <script src="lib/docsify.min.js"></script>
 </body>
 </html>
