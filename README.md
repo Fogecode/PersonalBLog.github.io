@@ -51,14 +51,11 @@ ThersummerBlog/
 ├── _sidebar.md             ★ 侧边栏导航（文章目录）
 ├── _navbar.md              备用原生导航（当前被自定义导航栏隐藏）
 ├── _coverpage.md           封面页内容
-├── zh-cn.md                语言占位文件
 ├── showcase/               ★ 插件展示文档（Typeset Live / obsidian-fashion / Typeset，含图片）
 ├── lib/                    ★ docsify 4.13.1 本地自托管资源（js + 5 个主题 css）
 │   ├── docsify.min.js
 │   └── vue.css / dark.css / pure.css / dolphin.css / buble.css
 ├── images/                 ★ 博客图片资源（blog.png / avatar.jpg / Lionlogo01.png）
-├── SchoolNetWork/          文章：校园网络笔记（侧边栏入口暂被注释）
-├── Ownermd/                文章：个人随笔（侧边栏入口暂被注释）
 ├── .nojekyll               ★ 告诉 GitHub Pages 不要用 Jekyll 处理（必需）
 ├── package.json            npm 元数据 + 本地预览脚本
 └── .gitignore
@@ -66,9 +63,10 @@ ThersummerBlog/
 
 ★ = 核心文件，改动前建议先备份。
 
-> **旧文档已转本地存档（2026-10-25）**：`修复报告.md`、`guide.md`、`醒狮社区文档/` 及其专属图片
-> `report-assets/`、`images/个人博客/`、`images/醒狮社区/` 不再随仓库发布（已在 `.gitignore` 中忽略，
-> 并从仓库移除跟踪），文件仍完整保留在本地。线上展示文档见 `showcase/`。
+> **旧文档与早期笔记已转本地存档（2026-10-25）**：`修复报告.md`、`guide.md`、`醒狮社区文档/`、
+> `SchoolNetWork/`、`Ownermd/`、`zh-cn.md` 及专属图片 `report-assets/`、`images/个人博客/`、
+> `images/醒狮社区/` 不再随仓库发布（已在 `.gitignore` 中忽略，并从仓库移除跟踪），
+> 文件仍完整保留在本地。线上展示文档见 `showcase/`。
 
 ---
 
