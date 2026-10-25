@@ -52,25 +52,23 @@ ThersummerBlog/
 ├── _navbar.md              备用原生导航（当前被自定义导航栏隐藏）
 ├── _coverpage.md           封面页内容
 ├── zh-cn.md                语言占位文件
-├── guide.md                导航栏与主题改造的配置指南
+├── showcase/               ★ 插件展示文档（Typeset Live / obsidian-fashion / Typeset，含图片）
 ├── lib/                    ★ docsify 4.13.1 本地自托管资源（js + 5 个主题 css）
 │   ├── docsify.min.js
 │   └── vue.css / dark.css / pure.css / dolphin.css / buble.css
-├── images/                 ★ 博客图片资源（按文章分子文件夹）
-│   ├── blog.png / avatar.jpg / Lionlogo01.png
-│   ├── 个人博客/
-│   └── 醒狮社区/
-├── 醒狮社区文档/            文章：博客介绍、醒狮社区、更新日志
-│   └── 图片/
+├── images/                 ★ 博客图片资源（blog.png / avatar.jpg / Lionlogo01.png）
 ├── SchoolNetWork/          文章：校园网络笔记（侧边栏入口暂被注释）
 ├── Ownermd/                文章：个人随笔（侧边栏入口暂被注释）
 ├── .nojekyll               ★ 告诉 GitHub Pages 不要用 Jekyll 处理（必需）
 ├── package.json            npm 元数据 + 本地预览脚本
-├── 修复报告.md              2026-09 技术修复的详细报告
 └── .gitignore
 ```
 
 ★ = 核心文件，改动前建议先备份。
+
+> **旧文档已转本地存档（2026-10-25）**：`修复报告.md`、`guide.md`、`醒狮社区文档/` 及其专属图片
+> `report-assets/`、`images/个人博客/`、`images/醒狮社区/` 不再随仓库发布（已在 `.gitignore` 中忽略，
+> 并从仓库移除跟踪），文件仍完整保留在本地。线上展示文档见 `showcase/`。
 
 ---
 
@@ -166,16 +164,16 @@ Logo 图片在 `images/blog.png`（导航栏）/ `images/avatar.jpg`（封面）
 
 ## 八、相关文档
 
-- [醒狮社区文档/Thesummer个人专属博客.md](醒狮社区文档/Thesummer个人专属博客.md) —— 博客搭建过程记录
-- [醒狮社区文档/醒狮社区测试.md](醒狮社区文档/醒狮社区测试.md) —— 醒狮社区项目测试记录
+- **线上展示文档**：`showcase/` 下的三份插件自述（[Typeset Live](showcase/typeset-live/)、[obsidian-fashion](showcase/obsidian-fashion/)、[Typeset](showcase/typeset/)），见站点侧边栏「插件展示」。
+- **本地存档**：博客介绍、醒狮社区、更新日志等旧文档已不再随仓库发布，文件仍在本地原路径，可随时查阅。
 
 ---
 
-## 九、修复报告
+## 九、修复报告（本地存档）
 
-博客的技术改造与维护记录，也收录在侧边栏"博客说明文档"分支下：
+`修复报告.md` 与 `guide.md` 已转为**本地存档**（不再上传仓库），内容仍在项目根目录：
 
-- **[修复报告](修复报告.md)** —— 2026-09 技术修复的完整报告：docsify 本地自托管（消除 BootCDN 供应链风险）、loading 遮罩 4 秒兜底防白屏、深色主题刷新防闪白、主题脚本重构、`.theme-link` 绑定、`package.json` 修正等，含前后代码对比、时序图解与验收截图（`report-assets/`）。
-- **[博客改造指南](guide.md)** —— 导航栏与主题切换的配置改造指南：自定义毛玻璃导航栏、五主题滑块、封面页导航控制的实现说明。
+- **修复报告** —— 2026-09 技术修复的完整报告：docsify 本地自托管（消除 BootCDN 供应链风险）、loading 遮罩 4 秒兜底防白屏、深色主题刷新防闪白、主题脚本重构、`.theme-link` 绑定、`package.json` 修正等，含前后代码对比、时序图解与验收截图（`report-assets/`）。
+- **博客改造指南** —— 导航栏与主题切换的配置改造指南：自定义毛玻璃导航栏、五主题滑块、封面页导航控制的实现说明。
 
-> 如果日后对站点做了新的技术改动，建议按"修复报告"的格式追加记录，保持文档与代码同步。
+> 如果日后对站点做了新的技术改动，建议按"修复报告"的格式在本地追加记录，保持文档与代码同步。

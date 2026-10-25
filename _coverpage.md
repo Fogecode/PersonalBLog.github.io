@@ -12,4 +12,4 @@
 - 个性化🎨
 
 [GitHub](https://github.com/docsifyjs/docsify/)
-[Get Started](醒狮社区文档/Thesummer个人专属博客.md)
+[Get Started](showcase/typeset-live/)
